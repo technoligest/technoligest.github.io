@@ -1,0 +1,89 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  /* border:dashed blue 2px; */
+}
+a{
+  text-decoration: none;
+}
+header{
+  height: 100vh; 
+  background-image: url("images/portrait.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1{
+  margin: 0px;
+}
+.social {
+  padding: 25px;
+}
+
+.social-image {
+  height: 50px;
+}
+#socialGroup{
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0.5em;
+}
+
+#header-text{
+  color:#0f3d99;
+  text-align: right;
+  font-size: 3em;
+  width: 50vw;
+  display: inline-block;
+  padding-left: 50vw;
+  text-align: center;
+  padding-right: 7vw;
+}
+
+@media only screen and (max-width: 1300px) {
+  .social {
+    padding: 15px;
+  }
+  
+  .social-image {
+    height: 30px;
+  }
+  #header-text{
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .social {
+    padding: 10px;
+  }
+  
+  .social-image {
+    height: 25px;
+  }
+  #header-text{
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header{
+    background-image: url("images/portrait2.jpg");  
+  }
+
+  #header-text{
+    margin-top: 100px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    padding-right: 0px;
+    background-color: #0f3d99;
+  }
+}
+
+@media only screen and (max-height:600px){
+
+}
