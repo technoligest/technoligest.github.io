@@ -1,13 +1,16 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   /* border:dashed blue 2px; */
 }
-a{
+
+a {
   text-decoration: none;
 }
-header{
-  height: 100vh; 
+
+header {
+  height: 100vh;
   background-image: url("images/portrait.jpg");
   background-size: cover;
   background-position: center;
@@ -16,24 +19,33 @@ header{
   flex-direction: column;
   justify-content: center;
 }
-h1{
+
+h1 {
   margin: 0px;
 }
+
 .social {
-  padding: 25px;
+  padding-right: 25px;
 }
 
 .social-image {
-  height: 50px;
-}
-#socialGroup{
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 0.5em;
+  font-size: 1em;
+  display: inline;
+  color: #0f3d99;
 }
 
-#header-text{
-  color:#0f3d99;
+.social-image:hover {
+  color: #b8cdf7;
+}
+
+#socialGroup {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+}
+
+#header-text {
+  color: #0f3d99;
   text-align: right;
   font-size: 3em;
   width: 50vw;
@@ -47,11 +59,10 @@ h1{
   .social {
     padding: 15px;
   }
-  
   .social-image {
-    height: 30px;
+    font-size: 1.5em;
   }
-  #header-text{
+  #header-text {
     font-size: 2em;
   }
 }
@@ -60,30 +71,47 @@ h1{
   .social {
     padding: 10px;
   }
-  
   .social-image {
-    height: 25px;
+    font-size: 1.5em;
   }
-  #header-text{
+  #header-text {
     font-size: 1.5em;
   }
 }
 
-@media only screen and (max-width: 600px) {
-  header{
-    background-image: url("images/portrait2.jpg");  
+@media only screen and (max-width: 700px) {
+  header {
+    background-image: url("images/portrait2.jpg");
   }
-
-  #header-text{
-    margin-top: 100px;
+  #header-text {
+    margin-top: 50px;
+    margin-left: 30vw;
+    padding-left: 10vw;
+    padding-right: 15vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+    text-align: center;
+    width: 50vw;
+    font-size: 0.6em;
+    background-color: white;
+    color: #0f3d99;
+    /* margin-top: 100px;
     padding: 20px;
     color: white;
-    text-align: center;
+    
     padding-right: 0px;
-    background-color: #0f3d99;
+    background-color: #0f3d99; */
+  }
+  .social-image {
+    font-size: 2em;
+    /* color: white; */
+  }
+  #socialGroup {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1.5em;
   }
 }
 
-@media only screen and (max-height:600px){
-
-}
+@media only screen and (max-height:600px) {}
