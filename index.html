@@ -2,18 +2,28 @@
 <html lang="en">
 
 <head>
+
+  <title>Yaser Alkayale</title>
+
+  <!--
+  ============================
+    Social Media Meta Tags
+  ============================
+  -->
   <meta property="og:title" content="Yaser Alkayale: Let's chat!">
   <meta property="og:description" content="I heard it's good to have a personal website. So, I built one.">
   <meta property="og:url" content="http://yaser.ca">
   <meta property="og:image" content="http://yaser.ca/images/portrait.jpg">
-  <meta property="og:type"   content="website" /> 
+  <meta property="og:type" content="website" />
 
-
+  <meta name="description" content="This is Yaser! An entrepreneur, software developer, and creative. Let's chat!">
+  <meta name="author" content="Yaser Alkayale">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="style.css"> -->
-  <title>Yaser Alkayale</title>
+
+
+
   <link rel="icon" href="images/favicon.png">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
     crossorigin="anonymous">
@@ -87,7 +97,7 @@
     }
 
     header {
-      background-attachment:fixed;
+      background-attachment: fixed;
       background-image: url("images/portrait.jpg");
       height: 100vh;
 
@@ -99,7 +109,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-     
+
     }
 
     h1 {
@@ -110,30 +120,31 @@
     h2 {
       margin: 0px;
       font-size: 2em;
+      color: #0f3d99;
     }
-    h3{
-      margin:0px;
+
+    h3 {
+      margin: 0px;
       font-size: 1em;
       font-family: 'Bilbo Swash Caps', cursive, 'Leckerli One', cursive;
     }
 
     p {
       font-size: 1em;
+      color: #0f3d99;
     }
 
-    .social {
-      padding-right: 25px;
-    }
+    
 
     .social-image {
-      font-size: 1em;
+      font-size: 50px;
       display: inline-block;
       color: #0f3d99;
-      margin: 0;
+      margin: 1.5vw;
       vertical-align: top;
     }
 
-  
+
 
     #socialGroup {
       margin-right: auto;
@@ -175,6 +186,7 @@
       margin-right: 50vw;
       margin-left: 10vw;
     }
+
     .section-left:hover {
       margin-right: 49.5vw;
       margin-left: 9.5vw;
@@ -184,6 +196,7 @@
       margin-right: 30vw;
       margin-left: 30vw;
     }
+
     .section-centre:hover {
       margin-right: 29.5vw;
       margin-left: 29.5vw;
@@ -193,7 +206,8 @@
       margin-right: 10vw;
       margin-left: 50vw;
     }
-    .section-right:hover{
+
+    .section-right:hover {
       margin-right: 9.5vw;
       margin-left: 49.5vw;
     }
@@ -202,10 +216,12 @@
       margin-top: 50vh;
       margin-bottom: 10vh;
     }
-    .section-bottom:hover{
+
+    .section-bottom:hover {
       margin-top: 49.5vh;
       margin-bottom: 9.5vh;
     }
+
     .section-text {
       background-color: rgba(255, 255, 255, 0.97);
       border-radius: 20px;
@@ -228,33 +244,37 @@
 
     }
 
-    .social-image :hover{
+    .social-image :hover {
       /* font-size: 2em; */
-      color: #b8cdf7;
+      /* color: #b8cdf7; */
     }
 
     @media only screen and (max-width: 1300px) {
-      .social {
-        padding: 15px;
-      }
-      .social-image {
-        font-size: 1.5em;
-      }
+      /* .social-image{
+        font-size: 6vw;
+        margin: 3vw;
+      } */
+      
       #header-text {
         font-size: 2em;
       }
     }
 
     @media only screen and (max-width: 900px) {
-      .social {
-        padding: 10px;
-      }
+      /* .social-image{
+        font-size: 6vw;
+        margin: 3vw;
+      } */
       #header-text {
         font-size: 1.3em;
       }
     }
 
     @media only screen and (max-width: 500px) {
+      /* .social-image{
+        font-size: 8vw;
+        margin: 4vw;
+      } */
       header {
         background-image: url("images/portrait2.jpg");
         background-attachment: initial;
@@ -271,9 +291,7 @@
         font-size: 0.8em;
         background-color: rgba(255, 255, 255, 0.9);
       }
-      .social-image {
-        font-size: 2em;
-      }
+      
       #socialGroup {
         margin-right: auto;
         margin-left: auto;
@@ -299,6 +317,28 @@
         display: none;
       }
     }
+
+    .hvr-grow-x2 {
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+    }
+
+    .hvr-grow-x2:hover,
+    .hvr-grow:focus,
+    .hvr-grow:active {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.5);
+    }
   </style>
 </head>
 
@@ -313,23 +353,23 @@
       <div id="socialGroup">
         <a href="https://github.com/technoligest" class="social" target="_blank">
           <div class="social-image">
-            <i class="fab fa-github-square"></i>
+            <i class="fab fa-github-square  hvr-grow-x2"></i>
           </div>
           <!-- <img src="images/github.png" alt="Github Link" class="social-image" > -->
         </a>
         <a href="https://facebook.com/yaseralkayale" class="social" target="_blank">
           <div class="social-image">
-            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-facebook-square  hvr-grow-x2"></i>
           </div>
         </a>
         <a href="https://instagram.com/yaseralkayale" class="social" target="_blank">
           <div class="social-image">
-            <i class="fab fa-instagram"></i>
+            <i class="fab fa-instagram  hvr-grow-x2"></i>
           </div>
         </a>
         <a href="https://Linkedin.com/in/yaseralkayale" class="social" target="_blank">
           <div class="social-image">
-            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-linkedin  hvr-grow-x2"></i>
           </div>
         </a>
       </div>
@@ -341,52 +381,58 @@
     </h1>
   </div> -->
   <div class="section-image" style="background-image: url('images/uif.jpg')">
-    <div class="section-text section-centre section-bottom" onclick="window.open('https://www.dal.ca/news/2017/04/05/dal-s-university-innovation-fellows-bring-entrepreneurship-and-i.html','_blank')">
-      <h2>University Innovation Fellow</h2>
-      <p>
-        Through a 6-week training program through Stanford University and a week-long trip to Silicon Valley, my inspiration and
-        love for innovation and entrepreneurship has never been as high.
+    <a href="https://www.dal.ca/news/2017/04/05/dal-s-university-innovation-fellows-bring-entrepreneurship-and-i.html" target="_blank">
+      <div class="section-text section-centre section-bottom">
+        <h2>University Innovation Fellow</h2>
+        <p>
+          Through a 6-week training program through Stanford University and a week-long trip to Silicon Valley, my inspiration and
+          love for innovation and entrepreneurship has never been as high.
 
-        <br>
-        <br> This program connected me with hundreds of highly motivated people who have caused real change around the world.
+          <br>
+          <br> This program connected me with hundreds of highly motivated people who have caused real change around the world.
 
-        <br>
-        <br> With my partner and co-president of the Dalhousie Entrepreneurship Society, we were able to complete a program named
-        Teuesday Take-offs and inspire hundreds of students to get involved with innovation and entrepreneurship.
+          <br>
+          <br> With my partner and co-president of the Dalhousie Entrepreneurship Society, we were able to complete a program
+          named Teuesday Take-offs and inspire hundreds of students to get involved with innovation and entrepreneurship.
 
-        <br>
-        <br> Wanna learn more? Chat with me in the bottom right corner.
-      </p>
-    </div>
+          <br>
+          <br> Wanna learn more? Chat with me in the bottom right corner.
+        </p>
+      </div>
+    </a>
   </div>
   <div class="section-image" style="background-image: url('images/canadian.jpg')">
-    <div class="section-text section-right section-bottom" onclick="window.open('https://linkedin.com/in/yaseralkayale','_blank')">
-      <h2>What does it mean to be Canadian?</h2>
-      <p>
-        I was born in Syrian, yet I grew up in Canada. It took my family and I over 10 years to become Canadian citizens, much longer
-        than it should have taken. While I am very proud of my Syrian background, I would not trade my Canadian citizenship
-        for the world. Living in Canada, we sometimes take it for granted that we live a Canadian lifestyle, but I truely
-        appreciate every minute of it. The ability to get great education, having the freedoms of life, and being able to
-        enjoy and celebrate our roots and backgrounds is an experience that is truly only Canadian. Eh?
-      </p>
-    </div>
+    <a href="https://linkedin.com/in/yaseralkayale" target="_blank">
+      <div class="section-text section-right section-bottom">
+        <h2>What does it mean to be Canadian?</h2>
+        <p>
+          I was born in Syrian, yet I grew up in Canada. It took my family and I over 10 years to become Canadian citizens, much longer
+          than it should have taken. While I am very proud of my Syrian background, I would not trade my Canadian citizenship
+          for the world. Living in Canada, we sometimes take it for granted that we live a Canadian lifestyle, but I truely
+          appreciate every minute of it. The ability to get great education, having the freedoms of life, and being able
+          to enjoy and celebrate our roots and backgrounds is an experience that is truly only Canadian. Eh?
+        </p>
+      </div>
+    </a>
   </div>
   <div class="section-image" style="background-image: url('images/shokran.jpg')">
-    <div class="section-text section-left section-bottom" onclick="window.open('https://facebook.com/dalhousiesss','_blank')">
-      <h2>Dalhousie Syrian Student Society</h2>
-      <p>
-        The Syrian Student Society has been one of the most active societies at Dalhousie University and across the maritimes. The
-        society has been vital in spereading and promoting the real Syrian culture. As the president of the society, it has
-        been my mission to
+    <a href="https://facebook.com/dalhousiesss" target="_blank">
+      <div class="section-text section-left section-bottom">
+        <h2>Dalhousie Syrian Student Society</h2>
+        <p>
+          The Syrian Student Society has been one of the most active societies at Dalhousie University and across the maritimes. The
+          society has been vital in spereading and promoting the real Syrian culture. As the president of the society, it
+          has been my mission to
 
-        <br>
-        <br> Our biggest event so far was Shokran Canada with over 500 attendees and thousands of dollars raised for Habitat
-        for Humanity. This event was our milestone in showing the true Syrian culture as a culture of love, generosity, and
-        good food, not a culture of war.
-        <br>
-        <br> Wanna learn more or help out? Let’s chat on the bottom right corner.
-      </p>
-    </div>
+          <br>
+          <br> Our biggest event so far was Shokran Canada with over 500 attendees and thousands of dollars raised for Habitat
+          for Humanity. This event was our milestone in showing the true Syrian culture as a culture of love, generosity,
+          and good food, not a culture of war.
+          <br>
+          <br> Wanna learn more or help out? Let’s chat on the bottom right corner.
+        </p>
+      </div>
+    </a>
   </div>
   <div id="footer">
     <h3>
@@ -394,23 +440,23 @@
     </h3>
     <a href="https://github.com/technoligest" class="social" target="_blank">
       <div class="social-image">
-        <i class="fab fa-github-square"></i>
+        <i class="fab fa-github-square hvr-grow-x2 "></i>
       </div>
       <!-- <img src="images/github.png" alt="Github Link" class="social-image" > -->
     </a>
     <a href="https://facebook.com/yaseralkayale" class="social" target="_blank">
       <div class="social-image">
-        <i class="fab fa-facebook-square"></i>
+        <i class="fab fa-facebook-square hvr-grow-x2 "></i>
       </div>
     </a>
     <a href="https://instagram.com/yaseralkayale" class="social" target="_blank">
-      <div class="social-image">
-        <i class="fab fa-instagram"></i>
+      <div class=" social-image">
+        <i class="fab fa-instagram hvr-grow-x2   "></i>
       </div>
     </a>
     <a href="https://Linkedin.com/in/yaseralkayale" class="social" target="_blank">
       <div class="social-image">
-        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-linkedin hvr-grow-x2 "></i>
       </div>
     </a>
   </div>
