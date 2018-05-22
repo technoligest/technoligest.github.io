@@ -96,22 +96,6 @@
       text-decoration: none;
     }
 
-    header {
-      background-attachment: fixed;
-      background-image: url("images/portrait.jpg");
-      height: 100vh;
-
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-
-    }
-
     h1 {
       font-family: 'Bilbo Swash Caps', cursive, 'Leckerli One', cursive;
       margin: 0px;
@@ -134,7 +118,22 @@
       color: #0f3d99;
     }
 
-    
+
+
+    header {
+      background-attachment: fixed;
+      background-image: url("images/portrait.jpg");
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+
 
     .social-image {
       font-size: 50px;
@@ -143,8 +142,6 @@
       margin: 1.5vw;
       vertical-align: top;
     }
-
-
 
     #socialGroup {
       margin-right: auto;
@@ -172,6 +169,7 @@
       color: unset;
       text-align: center;
     }
+
 
     .section-image {
       background-size: cover;
@@ -223,7 +221,7 @@
     }
 
     .section-text {
-      
+
       background-color: rgba(255, 255, 255, 0.97);
       border-radius: 20px;
       width: 37vw;
@@ -237,39 +235,32 @@
       padding-bottom: 4vh;
     }
 
-    .section-text:hover {
-      border-top: solid 0.5vh #0f3d99;
-      border-bottom: solid 0.5vh #0f3d99;
-      border-right: solid 0.5vw #0f3d99;
-      border-left: solid 0.5vw #0f3d99;
+    @media only screen and (min-width: 501px) {
+      .section-text:hover {
+        border-top: solid 0.5vh #0f3d99;
+        border-bottom: solid 0.5vh #0f3d99;
+        border-right: solid 0.5vw #0f3d99;
+        border-left: solid 0.5vw #0f3d99;
 
+      }
     }
 
-    @media only screen and (max-width: 1300px) {      
+    @media only screen and (max-width: 1300px) {
       #header-text {
         font-size: 2em;
       }
       .section-image {
-     
-      background-attachment: scroll;
-    }
+        background-attachment: scroll;
+      }
     }
 
     @media only screen and (max-width: 900px) {
-      /* .social-image{
-        font-size: 6vw;
-        margin: 3vw;
-      } */
       #header-text {
         font-size: 1.3em;
       }
     }
 
     @media only screen and (max-width: 500px) {
-      /* .social-image{
-        font-size: 8vw;
-        margin: 4vw;
-      } */
       header {
         background-image: url("images/portrait2.jpg");
         background-attachment: initial;
@@ -286,7 +277,7 @@
         font-size: 0.8em;
         background-color: rgba(255, 255, 255, 0.9);
       }
-      
+
       #socialGroup {
         margin-right: auto;
         margin-left: auto;
