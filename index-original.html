@@ -151,7 +151,6 @@
     }
 
     #header-text {
-      text-align: right;
       font-size: 3em;
       width: 50vw;
       display: inline-block;
@@ -357,11 +356,106 @@
       -webkit-transform: scale(1.1);
       transform: scale(1.5);
     }
+
+    /* .arrow-down {
+
+      display: inline-block;
+      width:50px;
+      height: 50px;
+      background: white;
+      border: #0f3d99 solid;
+      border-radius: 50%;
+      -webkit-animation: 3s arrow infinite ease;
+      animation: 3s arrow infinite ease
+
+
+      margin: 0 auto;
+      /* text-align: centre; */
+
+    /* } */
+
+    .bottom {
+      text-align: center;
+      display: inline-block;
+      justify-content: center;
+      width: 6vh;
+      height: 6vh;
+      border: 0.75vh solid #0f3d99;
+      background-color: white;
+      border-radius: 50%;
+      margin-left: 1.125vh;
+      -webkit-animation: 3s arrow infinite ease;
+      animation: 3s arrow infinite ease;
+    }
+
+    .bottom:after {
+      content: '';
+      display: inline-block;
+      margin-top: 0.9vh;
+      width: 2.1vh;
+      height: 2.1vh;
+      border-top: 0.75vh solid #0f3d99;
+      border-right: 0.75vh solid #0f3d99;
+      -moz-transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+
+
+      -webkit-animation: 3s arrow infinite ease;
+      animation: 3s arrow infinite ease;
+    }
+
+    @-webkit-keyframes arrow {
+      0%,
+      100% {
+        top: 150px;
+      }
+      50% {
+        top: 0px;
+      }
+    }
+
+    @keyframes arrow {
+      0%,
+      100% {
+        top: 150px;
+      }
+      50% {
+        top: 0px;
+      }
+    }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+ $(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+  </script>
+  
 </head>
 
 <body>
-  <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="images/portrait.jpg"></div> -->
   <header>
     <div id="header-text">
 
@@ -392,69 +486,78 @@
         </a>
       </div>
     </div>
+
+
+
+
   </header>
-  <!-- <div class="section-header">
-    <h1>
-      University Innovation Fellows
-    </h1>
-  </div> -->
-  <div class="section-image" style="background-image: url('images/uif.jpg')">
-    <a href="https://www.dal.ca/news/2017/04/05/dal-s-university-innovation-fellows-bring-entrepreneurship-and-i.html" target="_blank">
-      <div class="section-text section-centre section-bottom">
-        <h2>University Innovation Fellows</h2>
-        <p>
-          Through a 6-week training program through Stanford University and a week-long trip to Silicon Valley, my inspiration and
-          love for innovation and entrepreneurship has never been as high.
 
-          <br>
-          <br> This program connected me with hundreds of highly motivated people who have caused real change around the world.
-
-          <br>
-          <br> With my partner and co-president of the Dalhousie Entrepreneurship Society, we were able to complete a program
-          named Teusday Take-offs and inspire hundreds of students to get involved with innovation and entrepreneurship.
-
-          <br>
-          <br> Wanna learn more? Chat with me in the bottom right corner.
-        </p>
-      </div>
-      <img id="uif-image">
+  <div style="height:0px;width:100vw; margin: -15vh auto 15vh; text-align: center;">
+    <a href="#sections">
+      <span class="bottom"></span>
     </a>
   </div>
-  <div class="section-image" style="background-image: url('images/canadian.jpg')">
-    <a href="https://linkedin.com/in/yaseralkayale" target="_blank">
-      <div class="section-text section-right section-bottom">
-        <h2>What does it mean to be Canadian?</h2>
-        <p>
-          I was born in Syria, yet I grew up in Canada. It took my family and I over 10 years to become Canadian citizens, much longer
-          than it should have taken. While I am very proud of my Syrian background, I would not trade my Canadian citizenship
-          for the world. Living in Canada, we sometimes take it for granted that we live a Canadian lifestyle, but I truely
-          appreciate every minute of it. The ability to get great education, having the freedoms of life, and being able
-          to enjoy and celebrate our roots and backgrounds is an experience that is truly only Canadian. Eh?
-        </p>
-      </div>
-    </a>
-    <img id="canada-image">
-  </div>
-  <div class="section-image" style="background-image: url('images/shokran.jpg')">
-    <a href="https://facebook.com/dalhousiesss" target="_blank">
-      <div class="section-text section-left section-bottom">
-        <h2>Dalhousie Syrian Student Society</h2>
-        <p>
-          The Syrian Student Society has been one of the most active societies at Dalhousie University and across the maritimes. The
-          society has been vital in spereading and promoting the real Syrian culture. As the president of the society, it
-          has been my mission to strategically navigate the society to bigger success and wider reach.
 
-          <br>
-          <br> Our biggest event so far was Shokran Canada with over 500 attendees and thousands of dollars raised for Habitat
-          for Humanity. This event was our milestone in showing the true Syrian culture as a culture of love, generosity,
-          and good food, not a culture of war.
-          <br>
-          <br> Wanna learn more or help out? Let’s chat on the bottom right corner.
-        </p>
-      </div>
-    </a>
-    <img id="sss-image">
+  <div id="sections">
+    <div class="section-image" style="background-image: url('images/uif.jpg')">
+      <a href="https://www.dal.ca/news/2017/04/05/dal-s-university-innovation-fellows-bring-entrepreneurship-and-i.html" target="_blank">
+        <div class="section-text section-centre section-bottom">
+          <h2>University Innovation Fellows</h2>
+          <p>
+            Through a 6-week training program through Stanford University and a week-long trip to Silicon Valley, my inspiration and
+            love for innovation and entrepreneurship has never been as high.
+
+            <br>
+            <br> This program connected me with hundreds of highly motivated people who have caused real change around the world.
+
+            <br>
+            <br> With my partner and co-president of the Dalhousie Entrepreneurship Society, we were able to complete a program
+            named Teusday Take-offs and inspire hundreds of students to get involved with innovation and entrepreneurship.
+
+            <br>
+            <br> Wanna learn more? Chat with me in the bottom right corner.
+          </p>
+        </div>
+        <img id="uif-image">
+      </a>
+    </div>
+    <div class="section-image" style="background-image: url('images/canadian.jpg')">
+      <a href="https://linkedin.com/in/yaseralkayale" target="_blank">
+        <div class="section-text section-right section-bottom">
+          <h2>What does it mean to be Canadian?</h2>
+          <p>
+            I was born in Syria, yet I grew up in Canada. It took my family and I over 10 years to become Canadian citizens, much longer
+            than it should have taken. While I am very proud of my Syrian background, I would not trade my Canadian citizenship
+            for the world. Living in Canada, we sometimes take it for granted that we live a Canadian lifestyle, but I truely
+            appreciate every minute of it. The ability to get great education, having the freedoms of life, and being able
+            to enjoy and celebrate our roots and backgrounds is an experience that is truly only Canadian. Eh?
+          </p>
+        </div>
+      </a>
+      <img id="canada-image">
+    </div>
+    <div class="section-image" style="background-image: url('images/shokran.jpg')">
+      <a href="https://facebook.com/dalhousiesss" target="_blank">
+        <div class="section-text section-left section-bottom">
+          <h2>Dalhousie Syrian Student Society</h2>
+          <p>
+            The Syrian Student Society has been one of the most active societies at Dalhousie University and across the maritimes. The
+            society has been vital in spereading and promoting the real Syrian culture. As the president of the society,
+            it has been my mission to strategically navigate the society to bigger success and wider reach.
+
+            <br>
+            <br> Our biggest event so far was Shokran Canada with over 500 attendees and thousands of dollars raised for Habitat
+            for Humanity. This event was our milestone in showing the true Syrian culture as a culture of love, generosity,
+            and good food, not a culture of war.
+            <br>
+            <br> Wanna learn more or help out? Let’s chat on the bottom right corner.
+          </p>
+        </div>
+      </a>
+      <img id="sss-image">
+    </div>
   </div>
+
   <div id="footer">
     <h3>
       Feeling social?
