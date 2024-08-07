@@ -5,7 +5,7 @@ html {
 }
 body {
   color: #2b4364;
-  font-family: 'Assistant', sans-serif, 'Gudea', sans-serif;
+  font-family: "Assistant", sans-serif, "Gudea", sans-serif;
 }
 
 a:hover {
@@ -25,7 +25,7 @@ a:hover {
 }
 
 .header-image {
-  background-image: url(../images/portrait.jpg);
+  background-image: url(../images/portrait.webp);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -42,7 +42,8 @@ a:hover {
   margin-left: auto;
   margin-top: 5vh;
 }
-.social-image, .social-image:hover{
+.social-image,
+.social-image:hover {
   font-size: 50px;
   display: inline-block;
   color: #2b4364;
@@ -72,9 +73,8 @@ a:hover {
   transform: scale(1.5);
 }
 
-
 h1 {
-  font-family: 'Bilbo Swash Caps', cursive, 'Leckerli One', cursive;
+  font-family: "Bilbo Swash Caps", cursive, "Leckerli One", cursive;
   margin: 0px;
   color: #2b4364;
   font-size: 2em;
@@ -116,7 +116,8 @@ h1 {
   #socialGroup {
     margin-top: 0;
   }
-  .social-image, .social-image:hover {
+  .social-image,
+  .social-image:hover {
     font-size: 50px;
   }
   h1 {
