@@ -22,25 +22,25 @@ export default function Home() {
         <div className="absolute md:static md:bg-none bg-primary/90 p-10 md:p-0 w-full flex items-center flex-col justify-center bottom-10">
           <h1
             className={cn(
-              "text-7xl text-accent font-semibold",
+              "text-5xl md:text-7xl text-accent font-semibold",
               bilbo.className
             )}
           >{`Hi I'm Yaser`}</h1>
           <div className="flex gap-5 mt-5">
             <SocialLink href="https://facebook.com/yaseralkayale">
-              <Facebook className="size-16 text-accent" />
+              <Facebook className="size-12 text-accent" />
               <span>Facecook</span>
             </SocialLink>
             <SocialLink href="https://github.com/technoligest">
-              <Github className="size-16 text-accent" />
+              <Github className="size-12 text-accent" />
               <span>Github</span>
             </SocialLink>
             <SocialLink href="https://Linkedin.com/in/yaseralkayale">
-              <Linkedin className="size-16 text-accent" />
+              <Linkedin className="size-12 text-accent" />
               <span>Linkedin</span>
             </SocialLink>
             <SocialLink href="https://instagram.com/yaseralkayale">
-              <Instagram className="size-16 text-accent" />
+              <Instagram className="size-12 text-accent" />
               <span>Instagram</span>
             </SocialLink>
           </div>
