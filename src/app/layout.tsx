@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Chivo } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Chivo({ subsets: ["latin"] });
 
 const _metadata = {
   title: "Yaser Alkayale",
@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "bg-primary")}>{children}</body>
+      <body className={cn(inter.className)}>{children}</body>
     </html>
   );
 }

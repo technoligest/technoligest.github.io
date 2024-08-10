@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://yaser.ca
+
+# Sitemaps
+Sitemap: https://yaser.ca/sitemap.xml
