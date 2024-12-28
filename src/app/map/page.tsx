@@ -31,7 +31,7 @@ export default function Map() {
             <motion.div
               ref={ref}
               layoutId="map"
-              className="rounded-3xl overflow-hidden absolute w-full h-full"
+              className="rounded-xl overflow-hidden absolute w-full h-full"
             >
               <iframe
                 width="100%"
@@ -45,7 +45,7 @@ export default function Map() {
               <MotionButton
                 layoutId="map-button"
                 onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 rounded-2xl"
+                className="absolute top-2 right-2 rounded-lg"
                 size={"icon"}
                 variant={"outline"}
               >
