@@ -67,6 +67,13 @@ export default function Map() {
         , built by{" "}
         <Link href="https://yaser.ca" className="underline">
           Yaser
+        </Link>{" "}
+        on{" "}
+        <Link
+          className="underline"
+          href="https://github.com/technoligest/technoligest.github.io/blob/master/src/app/map/page.tsx"
+        >
+          Github
         </Link>
       </div>
     </div>
