@@ -2,13 +2,17 @@
 import { MotionButton } from "@/components/ui/button";
 import { MapIcon, XIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { useOnClickOutside } from "usehooks-ts";
+
 export default function Map() {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => setIsOpen(false));
   return (
     <div>
-      <div className="flex items-center justify-center max-w-[600px] w-[95vw] h-[600px] relative flex-col">
+      <div className="flex items-center justify-center max-w-[450px] w-[95vw] h-[450px] relative flex-col">
         <MotionButton
           layoutId="map"
           onClick={() => setIsOpen(true)}
@@ -23,13 +27,9 @@ export default function Map() {
           </motion.div>
         </MotionButton>
         <AnimatePresence>
-          {false ? (
-            <motion.div layoutId="map" className="w-full h-full bg-green-500">
-              Hello!
-            </motion.div>
-          ) : null}
           {isOpen ? (
             <motion.div
+              ref={ref}
               layoutId="map"
               className="rounded-3xl overflow-hidden absolute w-full h-full"
             >
