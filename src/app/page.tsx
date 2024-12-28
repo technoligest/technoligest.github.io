@@ -12,7 +12,7 @@ export default function Home() {
       <div className="grid grid-cols-2 w-full max-w-6xl relative">
         <div className="w-full flex items-center justify-center h-full relative col-span-2 md:col-span-1">
           <Image
-            src={"/technoligest.github.io/portrait.webp"}
+            src={"/portrait.webp"}
             alt={"Portrait of Yaser"}
             className="w-full"
             fill={true}
