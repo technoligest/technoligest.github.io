@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fff4e0">
+<title>Arabic Letter Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@700&family=Baloo+Bhaijaan+2:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+  :root {
+    --bg: #fff4e0; --card: #ffffff; --ink: #3b2a55; --muted: #8a7ba3;
+    --accent: #ff7a59; --good: #2fbf71; --bad: #ef4a5c; --shadow: 0 6px 0 rgba(59,42,85,.15);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Baloo Bhaijaan 2", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    padding: max(12px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    user-select: none; overflow-x: hidden;
+  }
+  header { width: 100%; max-width: 640px; display: flex; justify-content: space-between; align-items: center; }
+  .pill { background: var(--card); border-radius: 999px; padding: 6px 16px; font-weight: 800; box-shadow: var(--shadow); font-size: 1.1rem; }
+  main { width: 100%; max-width: 640px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+  .letter-card {
+    background: var(--card); border-radius: 28px; box-shadow: var(--shadow);
+    padding: 12px 16px 16px; text-align: center; position: relative;
+  }
+  .form-label { color: var(--muted); font-weight: 600; font-size: 1.1rem; }
+  .letter {
+    font-family: "Noto Naskh Arabic", serif; font-size: clamp(110px, 30vw, 180px);
+    line-height: 1.3; color: var(--accent); cursor: pointer;
+  }
+  .prompt { font-size: 1.15rem; font-weight: 600; }
+  .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .choice {
+    background: var(--card); border: 4px solid transparent; border-radius: 24px; box-shadow: var(--shadow);
+    aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform .12s ease, border-color .2s; padding: 6px; font: inherit; color: inherit;
+  }
+  .choice:active { transform: translateY(4px) scale(.97); box-shadow: 0 2px 0 rgba(59,42,85,.15); }
+  .choice .emoji { font-size: clamp(48px, 15vw, 88px); line-height: 1; }
+  .choice .word { font-family: "Noto Naskh Arabic", serif; font-size: clamp(16px, 4.5vw, 24px); height: 1.6em; opacity: 0; transition: opacity .3s; }
+  .revealed .choice .word { opacity: 1; }
+  .choice.correct { border-color: var(--good); background: #e9fbf1; }
+  .choice.wrong { border-color: var(--bad); background: #ffeef0; animation: shake .4s; }
+  .choice.dim { opacity: .45; }
+  .word b { color: var(--accent); }
+  @keyframes shake { 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }
+  .feedback { min-height: 3.2rem; text-align: center; font-size: 1.6rem; font-weight: 800; }
+  .feedback.good { color: var(--good); } .feedback.bad { color: var(--bad); }
+  .next {
+    align-self: center; background: var(--accent); color: #fff; border: 0; border-radius: 999px;
+    font: inherit; font-size: 1.4rem; font-weight: 800; padding: 10px 40px; box-shadow: 0 6px 0 #c4502f;
+    cursor: pointer; visibility: hidden;
+  }
+  .next.show { visibility: visible; }
+  .next:active { transform: translateY(4px); box-shadow: 0 2px 0 #c4502f; }
+  @media (min-width: 700px) and (min-height: 700px) { main { gap: 28px; } }
+  @media (max-height: 640px) { .letter { font-size: 96px; } main { gap: 10px; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="pill">⭐ <span id="score">0</span></span>
+  <span class="pill">🔥 <span id="streak">0</span></span>
+</header>
+<main>
+  <div class="letter-card">
+    <div class="form-label" id="formLabel"></div>
+    <div class="letter" id="letter" title="Tap to hear"></div>
+    <div class="prompt">أيُّ صورةٍ تبدأ بهذا الحرف؟</div>
+  </div>
+  <div class="choices" id="choices"></div>
+  <div class="feedback" id="feedback"></div>
+  <button class="next" id="next">التالي ←</button>
+</main>
+<script>
+// [letter, name, connectsForward, [[word, emoji], ...]]
+const LETTERS = [
+  ["ا","ألف",false,[["أسد","🦁"],["أرنب","🐇"]]],
+  ["ب","باء",true,[["بطة","🦆"],["بقرة","🐄"]]],
+  ["ت","تاء",true,[["تفاحة","🍎"],["تمساح","🐊"]]],
+  ["ث","ثاء",true,[["ثعلب","🦊"],["ثلج","❄️"]]],
+  ["ج","جيم",true,[["جمل","🐫"],["جزرة","🥕"]]],
+  ["ح","حاء",true,[["حصان","🐎"],["حوت","🐋"]]],
+  ["خ","خاء",true,[["خروف","🐑"],["خبز","🍞"]]],
+  ["د","دال",false,[["دب","🐻"],["دجاجة","🐔"]]],
+  ["ذ","ذال",false,[["ذرة","🌽"],["ذئب","🐺"]]],
+  ["ر","راء",false,[["ريشة","🪶"],["رز","🍚"]]],
+  ["ز","زاي",false,[["زرافة","🦒"],["زهرة","🌸"]]],
+  ["س","سين",true,[["سمكة","🐟"],["ساعة","⌚"]]],
+  ["ش","شين",true,[["شمس","☀️"],["شجرة","🌳"]]],
+  ["ص","صاد",true,[["صاروخ","🚀"],["صندوق","📦"]]],
+  ["ض","ضاد",true,[["ضفدع","🐸"],["ضرس","🦷"]]],
+  ["ط","طاء",true,[["طائرة","✈️"],["طماطم","🍅"]]],
+  ["ظ","ظاء",true,[["ظرف","✉️"],["ظبي","🦌"]]],
+  ["ع","عين",true,[["عنب","🍇"],["عين","👁️"]]],
+  ["غ","غين",true,[["غيمة","☁️"],["غراب","🐦‍⬛"]]],
+  ["ف","فاء",true,[["فيل","🐘"],["فراولة","🍓"]]],
+  ["ق","قاف",true,[["قطة","🐈"],["قمر","🌙"]]],
+  ["ك","كاف",true,[["كلب","🐕"],["كتاب","📖"]]],
+  ["ل","لام",true,[["ليمون","🍋"],["لوح","🛹"]]],
+  ["م","ميم",true,[["موز","🍌"],["مفتاح","🔑"]]],
+  ["ن","نون",true,[["نحلة","🐝"],["نمر","🐅"]]],
+  ["ه","هاء",true,[["هاتف","📱"],["هدية","🎁"]]],
+  ["و","واو",false,[["وردة","🌹"],["ولد","👦"]]],
+  ["ي","ياء",true,[["يد","✋"],["يخت","🛥️"]]],
+];
+const ZWJ = "‍";
+const FORMS = {
+  isolated: { label: "الشكل المنفرد · Isolated", make: l => l },
+  initial:  { label: "في أول الكلمة · Initial",   make: l => l + ZWJ },
+  medial:   { label: "في وسط الكلمة · Medial",    make: l => ZWJ + l + ZWJ },
+  final:    { label: "في آخر الكلمة · Final",     make: l => ZWJ + l },
+};
+
+const $ = id => document.getElementById(id);
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let score = 0, streak = 0, answered = false, current = null, bag = [];
+
+function speak(text) {
+  try {
+    if (!("speechSynthesis" in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "ar-SA"; u.rate = 0.85;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+function nextRound() {
+  // Shuffle-bag so every letter comes up before any repeats
+  if (!bag.length) bag = shuffle([...LETTERS.keys()]).filter(i => !current || i !== current.idx || LETTERS.length === 1);
+  const idx = bag.pop();
+  const [letter, name, connects, words] = LETTERS[idx];
+  const formKeys = connects ? ["isolated","initial","medial","final"] : ["isolated","final"];
+  const form = pick(formKeys);
+  const answer = pick(words);
+
+  const others = shuffle(LETTERS.map((_, i) => i).filter(i => i !== idx)).slice(0, 2);
+  const options = shuffle([
+    { word: answer[0], emoji: answer[1], correct: true },
+    ...others.map(i => { const w = pick(LETTERS[i][3]); return { word: w[0], emoji: w[1], correct: false }; })
+  ]);
+
+  current = { idx, name };
+  answered = false;
+  $("formLabel").textContent = FORMS[form].label;
+  $("letter").textContent = FORMS[form].make(letter);
+  $("feedback").textContent = ""; $("feedback").className = "feedback";
+  $("next").classList.remove("show");
+  const box = $("choices");
+  box.className = "choices"; box.innerHTML = "";
+  options.forEach(o => {
+    const b = document.createElement("button");
+    b.className = "choice";
+    b.innerHTML = `<span class="emoji">${o.emoji}</span><span class="word"><b>${o.word[0]}</b>${o.word.slice(1)}</span>`;
+    b.onclick = () => choose(b, o);
+    box.appendChild(b);
+  });
+}
+
+function choose(btn, opt) {
+  if (answered) return;
+  if (opt.correct) {
+    answered = true;
+    score++; streak++;
+    btn.classList.add("correct");
+    [...$("choices").children].forEach(c => c !== btn && c.classList.add("dim"));
+    $("choices").classList.add("revealed");
+    $("feedback").textContent = pick(["أحسنت! 🎉","ممتاز! 🌟","رائع! 👏","برافو! 🥳"]);
+    $("feedback").className = "feedback good";
+    $("next").classList.add("show");
+    speak(opt.word);
+    celebrate();
+  } else {
+    streak = 0;
+    btn.classList.remove("wrong"); void btn.offsetWidth; btn.classList.add("wrong");
+    btn.querySelector(".word").style.opacity = 1;
+    btn.disabled = true;
+    $("feedback").textContent = "خطأ ❌ حاول مرة أخرى";
+    $("feedback").className = "feedback bad";
+    if (navigator.vibrate) navigator.vibrate(150);
+  }
+  $("score").textContent = score; $("streak").textContent = streak;
+}
+
+function celebrate() {
+  if (typeof confetti !== "function") return;
+  const opts = { particleCount: 90, spread: 75, startVelocity: 45, disableForReducedMotion: true };
+  confetti({ ...opts, origin: { x: 0.2, y: 0.7 }, angle: 60 });
+  confetti({ ...opts, origin: { x: 0.8, y: 0.7 }, angle: 120 });
+}
+
+$("next").onclick = nextRound;
+$("letter").onclick = () => current && speak(current.name);
+nextRound();
+</script>
+</body>
+</html>
